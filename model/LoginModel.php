@@ -1,6 +1,6 @@
 <?php
 function userLoginAction(){
-	session_start();  
+//session_start();  
 	$host= "localhost";
 	$database  = "kapper";
 	$dbusername = "root";  
@@ -23,8 +23,9 @@ function userLoginAction(){
                     {
                     			   $userrole = getRole($_POST["username"]);
                     			   if ($userrole != null){
-                    			   $_SESSION["roles"] = $userrole;
-							       $_SESSION["username"] = $_POST["username"];
+                    			      $_SESSION["is_admin"] = $userrole;
+							                  $_SESSION["username"] = $_POST["username"];
+                                header("Location:" . URL . "home/index");
 			        }
 						} 
           }	
@@ -34,7 +35,7 @@ function userLoginAction(){
 
 function getRole($username){
 	$connect = openDatabaseConnection();
-	$query = "SELECT roles FROM users WHERE username = '$username'";
+	$query = "SELECT is_admin FROM users WHERE username = '$username'";
     $statement = $connect->prepare($query);  
     $statement->execute();
     $userrole = $statement->fetchColumn();
@@ -58,7 +59,7 @@ function verifyPassword($login_password, $user_password) {
 		return true;
 	}
 	else{
-	header("Location: login");
+  echo "the password is incorrect.";
 	return false;
 	}
 }

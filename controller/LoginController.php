@@ -1,8 +1,15 @@
 <?php
 
+require(ROOT . "model/LoginModel.php");
+
 function register()
 {
-	render("login/register");	
+	if (isset($_SESSION['username'])){ 
+		header("Location:" . URL . "home/index");
+	}
+	else{
+		render("login/register");
+	}	
 }
 
 function login()
@@ -13,4 +20,8 @@ function login()
 	else{
 		render("login/login");
 	}
+}
+
+function logout(){
+	render("login/logout");
 }

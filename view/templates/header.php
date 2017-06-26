@@ -53,12 +53,28 @@
                     <li>
                         <a href="<?= URL ?>home/price">Prijzen</a>
                     </li>
+                    <?php 
+                    if (!isset($_SESSION['username']))
+                    {
+                    ?>
                     <li>
                         <a href="<?= URL ?>login/register">Registreren</a>
                     </li>
                     <li>
                         <a href="<?= URL ?>login/login">Login</a>
                     </li>
+                    <?php
+                    }
+                    ?>
+                    <?php
+                    if (isset($_SESSION['username'])){
+                        ?>
+                        <li>
+                        <a href="<?= URL ?>login/logout">Log out</a>
+                        </li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </ul>
             </div>
