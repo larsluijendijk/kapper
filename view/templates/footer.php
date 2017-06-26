@@ -1,3 +1,21 @@
-
-</body>
-</html>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+ <?php
+ if(isset($_SESSION["username"]))  
+ {  
+      echo '<h3>Welcome - '.$_SESSION["username"].'</h3>';
+      echo '<h3>Your role is:'.$_SESSION["roles"].'</h3>';
+ }  
+ else  
+ {  
+      echo 'you are not logged in!'; 
+ }  
+ ?>
+        </body>
+        </html>
