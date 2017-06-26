@@ -18,10 +18,9 @@
                      <form class="form-signin" action="<?= URL ?>login/userLoginAction" method="post">
                 <input type="text" name="username" class="form-control" placeholder="username" required autofocus>
                 <input type="password" name="password" class="form-control" placeholder="Password" required>
-                <input type="submit" id="login" placeholder="Login" name="login" class="btn btn-lg btn-primary btn-block" value="Login">
+                <input type="submit" id="login" placeholder="Login" name="login" class="btn btn-success" value="Login">
                 </form>
                 </label>
-                <a href="#" class="pull-right need-help" onclick="alert('oh no')">Need help? </a><span class="clearfix"></span>
                 
             </div>
         </div>
