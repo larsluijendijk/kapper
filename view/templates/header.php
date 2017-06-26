@@ -58,7 +58,7 @@
                     {
                     ?>
                     <li>
-                        <a href="<?= URL ?>login/register">Registreren</a>
+                        <a href="<?= URL ?>register/register">Registreren</a>
                     </li>
                     <li>
                         <a href="<?= URL ?>login/login">Login</a>
