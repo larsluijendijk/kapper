@@ -13,5 +13,10 @@ function login()
 }
 
 function logout(){
-	render("login/logout");
+	if (isset($_SESSION['username'])){ 
+		render("login/logout");
+	}
+	else{
+		echo"you are not logged in!";
+	}
 }

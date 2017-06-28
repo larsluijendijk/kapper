@@ -70,6 +70,9 @@
                     if (isset($_SESSION['username'])){
                         ?>
                         <li>
+                        <a href="<?= URL ?>agenda/index">Agenda</a>
+                        </li>
+                        <li>
                         <a href="<?= URL ?>login/logout">Log out</a>
                         </li>
                         <?php
