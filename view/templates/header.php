@@ -56,7 +56,7 @@
                     <?php 
                     if (!isset($_SESSION['username']))
                     {
-                    ?>
+                    ?> 
                     <li>
                         <a href="<?= URL ?>register/register">Registreren</a>
                     </li>

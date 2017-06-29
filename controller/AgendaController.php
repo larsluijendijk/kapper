@@ -13,3 +13,14 @@ function index()
 		render("home/index");
 	}
 }
+
+function create(){
+	if (isset($_SESSION['username'])){
+		if ($_SESSION['is_admin'] == 1){
+		render("agenda/create");
+		}
+		else{
+			echo"you are no admin!";
+		}
+	}
+}

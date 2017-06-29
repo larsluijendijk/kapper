@@ -8,7 +8,7 @@
     </tr>
     <?php foreach ($appointments as $appointment) { ?>
     <tr>
-    <?php var_dump($appointment);?>
+    <?php /* var_dump($appointment);*/?>
       <td><?= $appointment['date']; ?></td>
       <td><?= $appointment['start_time']; ?></td>
       <td><?= $appointment['end_time']; ?></td>
@@ -16,4 +16,14 @@
       <td><?= $appointment['klant']; ?></td>
     </tr> 
 </table>
+
 <?php } ?>
+<?php 
+if (isset($_SESSION['username'])){
+	if ($_SESSION['is_admin'] == 1){
+ ?>
+<a href="<?= URL ?>agenda/create"><button type="button" class="btn btn-success">Nieuwe afspraak</button></a>
+<?php
+}
+}
+?>
