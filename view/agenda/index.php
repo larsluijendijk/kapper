@@ -12,8 +12,8 @@
       <td><?= $appointment['date']; ?></td>
       <td><?= $appointment['start_time']; ?></td>
       <td><?= $appointment['end_time']; ?></td>
-      <td><?= $appointment['user_username']; ?></td>
-      <td><?= $appointment['user_username']; ?></td>
+      <td><?= $appointment['kapper']; ?></td>
+      <td><?= $appointment['klant']; ?></td>
     </tr> 
 </table>
 <?php } ?>

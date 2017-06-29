@@ -31,6 +31,7 @@ function userLoginAction(){
           }	
        }
     }
+header("Location:" . URL . "home/index");
  }
 
 function getRole($username){
@@ -53,6 +54,7 @@ function getUser($login_username) {
          );
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 	return $user;
+  
 }
 function verifyPassword($login_password, $user_password) {
 	if (password_verify($login_password, $user_password) ) {
