@@ -14,3 +14,32 @@ function getAllAppointments(){
 
 	return $query->fetchAll();
 }
+
+function getAllKappers(){
+	$db = openDatabaseConnection();
+
+	$sql = "SELECT id, username FROM users WHERE is_admin=1";
+	$query = $db->prepare($sql);
+	$query->execute();
+
+	$db = null;
+
+	return $query->fetchAll();
+}
+
+function createAppointmentAction($dates, $start_time, $end_time, $kapper, $customer_id) 
+{
+  $db = openDatabaseConnection();
+
+  $sql = "INSERT INTO agenda(date, start_time, end_time, employ_id, customer_id) VALUES (:dates, :start_time, :end_time, :kapper, :customer_id)";
+  $query = $db->prepare($sql);
+  $query->execute(array(
+    ':dates' => $dates,
+    ':start_time' => $start_time,
+    ':end_time' => $end_time,
+    ':kapper' => $kapper,
+    ':customer_id' => $customer_id
+    ));
+
+  $db = null;
+}

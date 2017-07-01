@@ -15,13 +15,15 @@
       <td><?= $appointment['kapper']; ?></td>
       <td><?= $appointment['klant']; ?></td>
     </tr> 
-</table>
+
 
 <?php } ?>
+</table>
 <?php 
 if (isset($_SESSION['username'])){
 	if ($_SESSION['is_admin'] == 1){
  ?>
+<br/>
 <a href="<?= URL ?>agenda/create"><button type="button" class="btn btn-success">Nieuwe afspraak</button></a>
 <?php
 }
