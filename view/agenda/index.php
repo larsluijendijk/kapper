@@ -5,6 +5,13 @@
       <th>Eind tijd</th>
       <th>Kapper</th>
       <th>Bezoeker</th>
+      <?php
+	if (isset($_SESSION['username'])){
+	if ($_SESSION['is_admin'] == 1){
+ ?>
+ <th>Aanpassen</th>
+ <th>Verwijderen</th>
+<?php } } ?>
     </tr>
     <?php foreach ($appointments as $appointment) { ?>
     <tr>
@@ -14,6 +21,13 @@
       <td><?= $appointment['end_time']; ?></td>
       <td><?= $appointment['kapper']; ?></td>
       <td><?= $appointment['klant']; ?></td>
+    <?php
+	if (isset($_SESSION['username'])){
+	if ($_SESSION['is_admin'] == 1){
+ ?>
+      <td><a href="<?= URL ?>agenda/edit/<?= $appointment['id'] ?>"><button type="button" class="btn btn-warning">Aanpassen</button></a></td>
+      <td><a href="<?= URL ?>agenda/deleteAppointment/<?= $appointment['id'] ?>"><button type="button" class="btn btn-danger">Verwijderen</button></a></td>
+ <?php } } ?>
     </tr> 
 
 

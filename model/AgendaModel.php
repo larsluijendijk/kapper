@@ -2,7 +2,7 @@
 function getAllAppointments(){
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT agenda.date, agenda.start_time, agenda.end_time, `emp`.username as kapper, `cust`.username as klant
+	$sql = "SELECT agenda.id, agenda.date, agenda.start_time, agenda.end_time, `emp`.username as kapper, `cust`.username as klant
 	FROM agenda
 	LEFT JOIN users as `emp` ON agenda.employ_id = `emp`.id
     LEFT JOIN users as `cust` ON agenda.customer_id = `cust`.id
@@ -42,4 +42,17 @@ function createAppointmentAction($dates, $start_time, $end_time, $kapper, $custo
     ));
 
   $db = null;
+}
+
+function deleteAppointmentAction($id){
+	$db = openDatabaseConnection();
+
+	$sql = "DELETE FROM agenda WHERE id=:id";
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		':id' => $id
+		));
+
+	$db = null;
+	header("Location:" . URL . "agenda/index");
 }

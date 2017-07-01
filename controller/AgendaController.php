@@ -37,3 +37,13 @@ function createAppointment(){
 		header("Location:" . URL . "error/error");
 	}
 }
+
+function deleteAppointment($id){
+	if(isset($id)){
+		deleteAppointmentAction($id);
+		header("Location:" . URL . "agenda/index");
+	}
+	else{
+ 		header("Location:" . URL . "error/error");
+	}
+}
