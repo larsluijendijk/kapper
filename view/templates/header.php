@@ -66,6 +66,23 @@
                     <?php
                     }
                     ?>
+
+                        <?php
+                        if (isset($_SESSION['is_admin'])){
+                            if($_SESSION['is_admin'] == 0){
+                        ?>
+                        <li>
+                        <a href="<?= URL ?>agenda/freetime">Beschikbare tijden</a>
+                        </li>
+                        <li>
+                        <a href="<?= URL ?>agenda/reserve">Mijn reseveringen</a>
+                        </li>
+                        <?php
+                            }
+                        }
+                        ?>
+
+
                     <?php
                     if (isset($_SESSION['username'])){
                         ?>

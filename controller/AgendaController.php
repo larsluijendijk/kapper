@@ -59,3 +59,37 @@ function showUser($id){
  		header("Location:" . URL . "error/error");
 	}
 }
+
+function freetime()
+{
+	if (isset($_SESSION['is_admin'])){
+		if($_SESSION['is_admin'] == 0){
+		render("agenda/freetime", array(
+		'freetimes' => getAllFreetime()
+	));
+		}
+	}
+	else{
+		render("home/index");
+	}
+}
+
+function signup($id)
+{
+	if (isset($_SESSION['is_admin'])){
+	if($_SESSION['is_admin'] == 0){
+	render("agenda/signup",array(
+	'signups' => showUpdateSignup($id)
+	));
+		}
+	}
+}
+
+function signupAction()
+{
+		if (isset($_POST['agenda_id']) && isset($_POST['customer_id'])){
+		updateSignup($_POST['agenda_id'], $_POST['customer_id']);
+	}
+	header("Location:" . URL . "agenda/index");
+
+}

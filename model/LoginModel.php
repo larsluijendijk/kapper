@@ -22,8 +22,10 @@ function userLoginAction(){
 						        if (verifyPassword($_POST["password"], $user['password'])) 
                     {
                     			   $userrole = getRole($_POST["username"]);
+                             $userid = getId($_POST["username"]);
                     			   if ($userrole != null){
                     			      $_SESSION["is_admin"] = $userrole;
+                                $_SESSION["id"] = $userid;
 							                  $_SESSION["username"] = $_POST["username"];
                                 header("Location:" . URL . "home/index");
 			        }
@@ -37,6 +39,15 @@ header("Location:" . URL . "home/index");
 function getRole($username){
 	$connect = openDatabaseConnection();
 	$query = "SELECT is_admin FROM users WHERE username = '$username'";
+    $statement = $connect->prepare($query);  
+    $statement->execute();
+    $userrole = $statement->fetchColumn();
+    return $userrole;
+}
+
+function getId($username){
+  $connect = openDatabaseConnection();
+  $query = "SELECT id FROM users WHERE username = '$username'";
     $statement = $connect->prepare($query);  
     $statement->execute();
     $userrole = $statement->fetchColumn();

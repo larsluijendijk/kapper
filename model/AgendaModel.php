@@ -15,6 +15,26 @@ function getAllAppointments(){
 	return $query->fetchAll();
 }
 
+
+function getAllFreetime(){
+	$db = openDatabaseConnection();
+
+	$sql = "SELECT agenda.id, agenda.date, agenda.start_time, agenda.end_time, agenda.employ_id ,agenda.customer_id, `emp`.username as kapper, `cust`.username as klant
+	FROM agenda
+	LEFT JOIN users as `emp` ON agenda.employ_id = `emp`.id
+    LEFT JOIN users as `cust` ON agenda.customer_id = `cust`.id
+    WHERE agenda.customer_id = 0
+    ";
+
+	$query = $db->prepare($sql);
+	$query->execute();
+
+	$db = null;
+
+	return $query->fetchAll();
+}
+
+
 function getAllKappers(){
 	$db = openDatabaseConnection();
 
@@ -67,4 +87,25 @@ function showCustomer($id){
 	$db = null;
 
 	return $query->fetchAll();
+}
+
+function showUpdateSignup($id){
+	$db = openDatabaseConnection();
+
+	$sql = "SELECT * FROM agenda WHERE id=$id";
+	$query = $db->prepare($sql);
+	$query->execute();
+
+	$db = null;
+
+	return $query->fetchAll();
+}
+
+function updateSignup($agenda_id, $customer_id){
+	$db = openDatabaseConnection();
+
+    $query = "UPDATE agenda SET customer_id='$customer_id' WHERE id=$agenda_id";
+    $result = $db->query($query);
+
+  $db = null;
 }
