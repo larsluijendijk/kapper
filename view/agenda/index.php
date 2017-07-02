@@ -5,12 +5,14 @@
       <th>Eind tijd</th>
       <th>Kapper</th>
       <th>Bezoeker</th>
+
       <?php
 	if (isset($_SESSION['username'])){
 	if ($_SESSION['is_admin'] == 1){
  ?>
  <th>Verwijderen</th>
 <?php } } ?>
+      <th>Geweest</th>
     </tr>
     <?php foreach ($appointments as $appointment) { ?>
     <tr>
@@ -26,8 +28,9 @@
  ?>
       <td><a href="<?= URL ?>agenda/deleteAppointment/<?= $appointment['id'] ?>"><button type="button" class="btn btn-danger">Verwijderen</button></a></td>
  <?php } } ?>
-    </tr> 
 
+      <td><?= $appointment['been_there']; ?></td>
+    </tr> 
 
 <?php } ?>
 </table>

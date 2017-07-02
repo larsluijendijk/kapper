@@ -2,7 +2,7 @@
 function getAllAppointments(){
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT agenda.id, agenda.date, agenda.start_time, agenda.end_time, agenda.customer_id, `emp`.username as kapper, `cust`.username as klant
+	$sql = "SELECT agenda.id, agenda.date, agenda.start_time, agenda.end_time, agenda.customer_id, agenda.been_there, `emp`.username as kapper, `cust`.username as klant
 	FROM agenda
 	LEFT JOIN users as `emp` ON agenda.employ_id = `emp`.id
     LEFT JOIN users as `cust` ON agenda.customer_id = `cust`.id
@@ -108,4 +108,34 @@ function updateSignup($agenda_id, $customer_id){
     $result = $db->query($query);
 
   $db = null;
+}
+
+function getReservation($id){
+	$db = openDatabaseConnection();
+
+$sql = "SELECT agenda.id, agenda.date, agenda.start_time, agenda.end_time, agenda.employ_id ,agenda.customer_id, `emp`.username as kapper, `cust`.username as klant
+	FROM agenda
+	LEFT JOIN users as `emp` ON agenda.employ_id = `emp`.id
+    LEFT JOIN users as `cust` ON agenda.customer_id = `cust`.id
+    WHERE agenda.customer_id = $id
+    ";
+	$query = $db->prepare($sql);
+	$query->execute();
+
+	$db = null;
+
+	return $query->fetchAll();
+}
+
+function cancelAppointment($id){
+	$db = openDatabaseConnection();
+
+	$sql = "UPDATE agenda SET customer_id = 0 WHERE id=$id";
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		':customer_id' => $customer_id
+		));
+
+	$db = null;
+
 }

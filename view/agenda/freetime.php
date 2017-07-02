@@ -1,4 +1,5 @@
 <table class="table">
+<h1>Beschikbare tijden:</h1>
     <tr>
       <th>Datum</th>
       <th>Begin tijd</th>

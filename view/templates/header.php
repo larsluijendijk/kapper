@@ -75,20 +75,28 @@
                         <a href="<?= URL ?>agenda/freetime">Beschikbare tijden</a>
                         </li>
                         <li>
-                        <a href="<?= URL ?>agenda/reserve">Mijn reseveringen</a>
+                        <a href="<?= URL ?>agenda/reservation">Mijn reseveringen</a>
                         </li>
                         <?php
                             }
                         }
                         ?>
 
-
-                    <?php
-                    if (isset($_SESSION['username'])){
+                        <?php
+                        if (isset($_SESSION['is_admin'])){
+                            if($_SESSION['is_admin'] == 1){
                         ?>
                         <li>
                         <a href="<?= URL ?>agenda/index">Agenda</a>
                         </li>
+                        <?php
+                            }
+                        }
+                        ?>
+
+                    <?php
+                    if (isset($_SESSION['username'])){
+                        ?>
                         <li>
                         <a href="<?= URL ?>login/logout">Log out</a>
                         </li>

@@ -4,16 +4,18 @@ require(ROOT . "model/AgendaModel.php");
 
 function index()
 {
-	if (isset($_SESSION['username'])){ 
+	if (isset($_SESSION['username'])){
+		if ($_SESSION['is_admin'] == 1){
 		render("agenda/index", array(
 		'appointments' => getAllAppointments()
 	));
 	}
+
 	else{
 		render("home/index");
+		}
 	}
 }
-
 function create(){
 	if (isset($_SESSION['username'])){
 		if ($_SESSION['is_admin'] == 1){
@@ -90,6 +92,30 @@ function signupAction()
 		if (isset($_POST['agenda_id']) && isset($_POST['customer_id'])){
 		updateSignup($_POST['agenda_id'], $_POST['customer_id']);
 	}
-	header("Location:" . URL . "agenda/index");
+	header("Location:" . URL . "agenda/reservation");
 
+}
+
+function reservation()
+{
+	if (isset($_SESSION['is_admin'])){
+		if($_SESSION['is_admin'] == 0){
+		render("agenda/reservation", array(
+		'reservations' => getReservation($_SESSION['id'])
+	));
+		}
+	}
+	else{
+		render("home/index");
+	}
+}
+
+function cancel($id){
+	if(isset($id)){
+		cancelAppointment($id);
+		header("Location:" . URL . "agenda/reservation");
+	}
+	else{
+ 		header("Location:" . URL . "error/error");
+	}
 }
