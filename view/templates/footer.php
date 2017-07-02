@@ -2,11 +2,12 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; 2017</p>
                 </div>
             </div>
         </footer>
  <?php
+ /*
  if(isset($_SESSION["username"]))  
  {  
       echo '<h3>Welcome - '.$_SESSION["username"].'</h3>';
@@ -17,6 +18,7 @@
  {  
       echo 'you are not logged in!'; 
  }  
+ */
  ?>
         </body>
         </html>
