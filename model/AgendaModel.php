@@ -47,18 +47,19 @@ function getAllKappers(){
 	return $query->fetchAll();
 }
 
-function createAppointmentAction($dates, $start_time, $end_time, $kapper, $customer_id) 
+function createAppointmentAction($dates, $start_time, $end_time, $kapper, $customer_id, $been_there) 
 {
   $db = openDatabaseConnection();
 
-  $sql = "INSERT INTO agenda(date, start_time, end_time, employ_id, customer_id) VALUES (:dates, :start_time, :end_time, :kapper, :customer_id)";
+  $sql = "INSERT INTO agenda(date, start_time, end_time, employ_id, customer_id, been_there) VALUES (:dates, :start_time, :end_time, :kapper, :customer_id, :been_there)";
   $query = $db->prepare($sql);
   $query->execute(array(
     ':dates' => $dates,
     ':start_time' => $start_time,
     ':end_time' => $end_time,
     ':kapper' => $kapper,
-    ':customer_id' => $customer_id
+    ':customer_id' => $customer_id,
+    ':been_there' => $been_there
     ));
 
   $db = null;

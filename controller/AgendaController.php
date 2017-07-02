@@ -30,9 +30,8 @@ function create(){
 }
 
 function createAppointment(){
-	if (isset($_POST['dates']) && isset($_POST['start_time']) && isset($_POST['end_time']) && isset($_POST['kapper']) && isset($_POST['customer_id'])){
-        createAppointmentAction($_POST['dates'], $_POST['start_time'], $_POST['end_time'], $_POST['kapper'], $_POST['customer_id']);
-
+	if (isset($_POST['dates']) && isset($_POST['start_time']) && isset($_POST['end_time']) && isset($_POST['kapper']) && isset($_POST['customer_id']) && isset($_POST['been_there'])){
+        createAppointmentAction($_POST['dates'], $_POST['start_time'], $_POST['end_time'], $_POST['kapper'], $_POST['customer_id'] , $_POST['been_there']);
         header("Location:" . URL . "agenda/index");
 	}
 	else{

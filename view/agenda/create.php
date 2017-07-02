@@ -27,6 +27,7 @@
       </div>
       <br/>
 	<input type="hidden" id="customer_id" name="customer_id"  value="0">
+  <input type="hidden" id="been_there" name="been_there"  value="nee">
 	  <div class="controls">
         <button class="btn btn-success">Nieuwe afspraak</button>
       </div>
