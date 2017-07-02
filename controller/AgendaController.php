@@ -47,3 +47,15 @@ function deleteAppointment($id){
  		header("Location:" . URL . "error/error");
 	}
 }
+
+function showUser($id){
+	if(isset($id)){
+		render("agenda/user", array(
+		'customer' => showCustomer($id)
+		));
+		/*header("Location:" . URL . "agenda/index");*/
+	}
+	else{
+ 		header("Location:" . URL . "error/error");
+	}
+}

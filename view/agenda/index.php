@@ -9,7 +9,6 @@
 	if (isset($_SESSION['username'])){
 	if ($_SESSION['is_admin'] == 1){
  ?>
- <th>Aanpassen</th>
  <th>Verwijderen</th>
 <?php } } ?>
     </tr>
@@ -20,12 +19,11 @@
       <td><?= $appointment['start_time']; ?></td>
       <td><?= $appointment['end_time']; ?></td>
       <td><?= $appointment['kapper']; ?></td>
-      <td><?= $appointment['klant']; ?></td>
+      <td><a href="<?= URL ?>agenda/showUser/<?= $appointment['customer_id'] ?>"><?= $appointment['klant']; ?></a></td>
     <?php
 	if (isset($_SESSION['username'])){
 	if ($_SESSION['is_admin'] == 1){
  ?>
-      <td><a href="<?= URL ?>agenda/edit/<?= $appointment['id'] ?>"><button type="button" class="btn btn-warning">Aanpassen</button></a></td>
       <td><a href="<?= URL ?>agenda/deleteAppointment/<?= $appointment['id'] ?>"><button type="button" class="btn btn-danger">Verwijderen</button></a></td>
  <?php } } ?>
     </tr> 
