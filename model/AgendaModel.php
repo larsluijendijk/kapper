@@ -139,3 +139,42 @@ function cancelAppointment($id){
 	$db = null;
 
 }
+
+function getBeenthere($id){
+	$db = openDatabaseConnection();
+
+	$sql = "SELECT been_there FROM agenda WHERE id=$id";
+	$query = $db->prepare($sql);
+	$query->execute();
+
+	$db = null;
+
+	return $query->fetchAll();
+}
+
+function changeToNo($id){
+	$db = openDatabaseConnection();
+
+	$sql = "UPDATE agenda SET been_there = 'nee' WHERE id=$id";
+	$query = $db->prepare($sql);
+	$query->execute();
+
+	$db = null;
+
+	return $query->fetchAll();
+
+}
+
+function changeToYes($id){
+	$db = openDatabaseConnection();
+
+	$sql = "UPDATE agenda SET been_there = 'ja' WHERE id=$id";
+	$query = $db->prepare($sql);
+	$query->execute();
+
+	$db = null;
+
+	return $query->fetchAll();
+
+}
+

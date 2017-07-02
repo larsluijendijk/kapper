@@ -29,7 +29,7 @@
       <td><a href="<?= URL ?>agenda/deleteAppointment/<?= $appointment['id'] ?>"><button type="button" class="btn btn-danger">Verwijderen</button></a></td>
  <?php } } ?>
 
-      <td><?= $appointment['been_there']; ?></td>
+      <td><a href="<?= URL ?>agenda/beenthere/<?= $appointment['id'] ?>"><button type="button" class="btn btn-info"><?= $appointment['been_there']; ?></button></a></td>
     </tr> 
 
 <?php } ?>

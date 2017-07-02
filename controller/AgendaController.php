@@ -119,3 +119,31 @@ function cancel($id){
  		header("Location:" . URL . "error/error");
 	}
 }
+
+function beenthere($id){
+	if (isset($_SESSION['is_admin'])){
+	if($_SESSION['is_admin'] == 1){
+	if(isset($id)){
+		$answer = getBeenthere($id);
+		$new_answer = array_reduce($answer, 'array_merge', array());
+		foreach ($new_answer as $key) {
+
+
+			if ($key == "ja"){
+				changeToNo($id);
+			header("Location:" . URL . "agenda/index");
+			}
+			elseif($key == "nee"){
+				changeToYes($id);
+			header("Location:" . URL . "agenda/index");
+			}
+
+			else{
+		 	header("Location:" . URL . "error/error");
+		 	}
+		 			}
+				}
+		  }					
+	 }
+	header("Location:" . URL . "agenda/index");
+}
