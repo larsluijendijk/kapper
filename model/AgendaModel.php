@@ -178,4 +178,3 @@ function changeToYes($id){
 	return $query->fetchAll();
 
 }
-
